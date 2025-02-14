@@ -339,10 +339,50 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    min-height: 400px;
-    width: inherit;
-    background-color: var(--color-emerald-100);
+    width: 100%;
+    background-color: var(--color-white);
     border-radius: 12px 12px 0 0;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pseudo-modal__close-button {
+    position: absolute;
+    top: calc(-24px + -12px);
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    fill: var(--color-emerald-800);
+}
+
+.pseudo-modal__header {
+    border-bottom: 1px solid var(--color-slate-200);
+    h2 {
+        font-size: 1.25rem;
+        text-align: center;
+        color: var(--color-slate-600);
+    }
+}
+
+.pseudo-modal__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+.pseudo-modal__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    margin: 0 auto;
+    padding: 12px 0;
+}
+
+.pseudo-modal__footer {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
 .navigation-header {
@@ -359,17 +399,9 @@
     font-size: 0.75rem;
     border-radius: 999px;
     cursor: pointer;
-}
-
-.button__large {
-    padding: 8px;
-    font-size: 1rem;
-}
-
-.button__primary {
-    color: var(--color-emerald-600);
-    border-color: var(--color-white);
-    background-color: var(--color-white);
+    display: block;
+    text-decoration: none;
+    text-align: center;
     box-shadow: var(--shadow-elevation-medium);
     transition: all 0.25s;
 
@@ -380,16 +412,41 @@
     &:active {
         box-shadow: var(--shadow-elevation-low);
     }
-
 }
 
-.button__underline {
+.button__full {
+    width: 100%;
+}
+
+.button__large {
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.button__primary {
+    background-color: var(--color-emerald-500);
+    color: var(--color-white);
+}
+
+.button__secondary {
+    color: var(--color-emerald-600);
+    border-color: var(--color-white);
+    background-color: var(--color-white);
+}
+
+.button__link {
     text-decoration: underline var(--color-white);
     text-underline-offset: 8px;
+    border-radius: 2px;
+    padding: 4px 8px;
 }
 
 .button__ghost {
-    padding: 0;
+    box-shadow: none;
+
+    &:active {
+        box-shadow: none;
+    }
 }
 
 main {
@@ -425,6 +482,10 @@ nav {
     }
 }
 
+select {
+    padding: 12px 20px;
+}
+
 .skeleton {
     display: block;
     color: transparent;
@@ -445,4 +506,71 @@ nav {
     width: 36px;
     height: 36px;
     border-radius: 12px;
+}
+
+.deposit__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.deposit-amount__input-container {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    color: var(--color-slate-600);
+    display: flex;
+    gap: 4px;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 0 8px;
+}
+
+.input-label {
+    font-size: 0.75rem;
+    color: var(--color-slate-400);
+}
+
+.input-label--with-icon {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.input-icon {
+    grid-row: 2;
+    grid-column: 1;
+    font-size: 2rem;
+    color: var(--color-slate-300);
+    font-weight: bold;
+    justify-content: end;
+}
+
+.input {
+    border: transparent;
+    background: transparent;
+    border-bottom: 1px solid var(--color-slate-200);
+    color: var(--color-slate-600);
+    font-size: 1rem;
+    width: 100%;
+
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+    }
+
+    &:read-only {
+    }
+
+}
+
+.input--large {
+    font-size: 2rem;
+}
+
+.input--with-icon {
+    grid-column: 2;
+    grid-row: 2;
 }
