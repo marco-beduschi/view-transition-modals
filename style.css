@@ -2,7 +2,7 @@
 
 @keyframes slide-up {
     from {
-        transform: translateY(100vh);
+        transform: translateY(100%);
     }
     to {
         opacity: 1;
@@ -16,7 +16,8 @@
         transform: translateY(0);
     }
     to {
-        transform: translateY(100vh);
+        opacity: 0;
+        transform: translateY(100%);
     }
 }
 
@@ -25,14 +26,28 @@
     navigation: auto;
 }
 
+::view-transition-old(pseudo-modal__close-button) {
+    animation: slide-down 100ms ease-out forwards;
+}
+
+::view-transition-new(pseudo-modal__close-button) {
+    opacity: 0;
+    animation: slide-up 300ms ease-in forwards;
+    animation-delay: 400ms;
+}
+
+::view-transition-group(pseudo-modal) {
+    z-index: 1;
+}
+
 ::view-transition-old(pseudo-modal) {
     animation: slide-down 300ms ease-out forwards;
 }
 
 ::view-transition-new(pseudo-modal) {
     opacity: 0;
-    animation: slide-up 300ms ease-out forwards;
-    animation-delay: 100ms;
+    animation: slide-up 300ms ease-in forwards;
+    animation-delay: 200ms;
 }
 
 /* variables */
@@ -396,17 +411,15 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-white);
-    border-radius: 12px 12px 0 0;
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .pseudo-modal__close-button {
+    view-transition-name: pseudo-modal__close-button;
+
     position: absolute;
-    top: calc(-24px + -12px);
+    top: -12px;
     right: 12px;
+    transform: translateY(-100%);
     width: 24px;
     height: 24px;
     fill: var(--color-emerald-950);
@@ -422,9 +435,13 @@
 }
 
 .pseudo-modal__content {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
+    background-color: var(--color-white);
+    border-radius: 12px 12px 0 0;
+    padding: 10px 20px;
 }
 
 .pseudo-modal__body {
